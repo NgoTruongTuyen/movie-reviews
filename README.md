@@ -15,4 +15,5 @@
 | 19127640 | Hoang Huu Giap | 19127640@student.hcmus.edu.vn |
 
 * The main repository: https://github.com/NgoTruongTuyen/movie-reviews-and-ratings
-* We use this repository to deploy your website on Heroku 
+* We use this repository to deploy your website on Heroku.
+* Website URL: https://movie-reviews-hcmus.herokuapp.com/
