@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ENG-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Anime Template"/>
+    <meta name="keywords" content="Anime, unica, creative, html"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Movie Review</title>
+
+    <!-- Google Font -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/plyr.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="header__logo">
+                    <a href="/">
+                        <img src="/img/logo.png" alt=""/>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="/">Homepage</a></li>
+                            {{#if user.userType}}
+                                <li>
+                                    <a href="/admin">Admin</a>
+                                </li>
+                            {{/if}}
+                            <li>
+                                <a href="/list/categories?genre=adventure&page=1">
+                                    Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </a>
+                                <ul class="dropdown">
+                                    <li><a href="/list/categories?genre=adventure&page=1">Adventure</a></li>
+                                    <li><a href="/list/categories?genre=horror&page=1">Horror</a></li>
+                                    <li><a href="/list/categories?genre=action&page=1">Action</a></li>
+                                    <li><a href="/list/categories?genre=fantasy&page=1">Fantasy</a></li>
+                                    <li><a href="/list/categories?genre=comedy&page=1">Comedy</a></li>
+                                    <li><a href="/list?page=1">All Movie</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">About</a></li>
+                            {{#if user.userType}}
+
+                            {{else}}
+                                <li><a href="#" data-toggle="modal" data-target="#reportModal">Report</a></li>
+                            {{/if}}
+                            <li style="padding-left: 10px">
+                                <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                            </li>
+                            {{#if user}}
+
+                            {{/if}}
+                            <li>
+                                {{#if user}}
+                                    <a href="#">
+                                        <span class="icon_profile"></span>
+                                        Hello {{user.username}}
+                                        <span class="arrow_carrot-down"></span>
+                                    </a>
+                                    <ul class="dropdown">
+                                        {{#if user.userType}}
+                                            <li><a href="#">Profile</a></li>
+                                            <li><a href="/admin">Dashboard</a></li>
+                                        {{else}}
+                                            <li><a href="/user/profile/{{user._id}}">Profile</a></li>
+                                            <li><a href="#">History</a></li>
+                                        {{/if}}
+                                    </ul>
+                                {{else}}
+                                    <a href="/auth/login"><span class="icon_profile"></span> Login</a>
+                                {{/if}}
+
+                            </li>
+                            {{#if user}}
+                                <li class="border-top"><a href="/auth/logout">Logout</a></li>
+                            {{/if}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        {{#if sentReport}}
+            <a>Sent report</a>
+        {{/if}}
+    </div>
+</header>
+<!-- Header End -->
+{{{body}}}
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="page-up">
+        <a href="#" id="scrollToTopButton"
+        ><span class="arrow_carrot-up"></span
+        ></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__logo">
+                    <a href="/"><img src="/img/logo.png" alt=""/></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    <ul>
+                        <li class="active"><a href="/">Homepage</a></li>
+                        <li><a href="/movieRanking">Movie Ranking</a></li>
+                        <li><a href="/list/categories">Categories</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Group 03 - Movie reviews and ratings <br>
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+
+                    All rights reserved | This template is made with
+                    <i class="fa fa-heart" aria-hidden="true"></i> by
+                    <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search model Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form" action="/list/searchPage" method="GET">
+            <input type="text" name="description" id="search-input" placeholder="Search here....."/>
+            <button type="submit" class="site-btn">Search</button>
+        </form>
+    </div>
+</div>
+<!-- Search model end -->
+
+<!-- Modal: modalPoll -->
+<div class="modal fade right" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+        <form action="/user/report" method="get">
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header"><p class="heading lead">Report</p></div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <p class="text-center"><strong>Content</strong></p>
+                    <!--Basic textarea-->
+                    <input type="hidden" id="userId" name="userId" value="{{user._id}}">
+                    <input type="hidden" id="username" name="username" value="{{user.username}}">
+                    <div class="md-form">
+                        <textarea type="text" id="form79textarea" name="message" class="md-textarea form-control" rows="7"></textarea>
+                    </div>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                        Send
+                        <i class="fa fa-paper-plane ml-1"></i>
+                    </button>
+                    <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal: modalPoll -->
+
+<!-- Js Plugins -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/player.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/mixitup.min.js"></script>
+<script src="/js/jquery.slicknav.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
